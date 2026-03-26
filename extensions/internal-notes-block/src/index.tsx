@@ -15,7 +15,7 @@ import { useState, useEffect } from 'react';
 export default reactExtension('admin.product-details.block.render', () => <InternalNotesBlock />);
 
 function InternalNotesBlock() {
-  const { data, sessionToken } = useApi<'admin.product-details.block.render'>();
+  const { data, auth } = useApi<'admin.product-details.block.render'>();
   const [note, setNote] = useState('');
   const [loading, setLoading] = useState(false);
   const [initialLoading, setInitialLoading] = useState(true);
@@ -32,7 +32,7 @@ function InternalNotesBlock() {
   useEffect(() => {
     async function fetchNote() {
       try {
-        const token = await sessionToken.get();
+        const token = await auth.idToken();
         const response = await fetch(`${backendUrl}/api/notes?resourceId=${resourceId}&resourceType=${resourceType}`, {
           headers: {
             Authorization: `Bearer ${token}`
@@ -49,12 +49,12 @@ function InternalNotesBlock() {
       }
     }
     fetchNote();
-  }, [resourceId, resourceType, sessionToken]);
+  }, [resourceId, resourceType, auth]);
 
   const handleSave = async () => {
     setLoading(true);
     try {
-      const token = await sessionToken.get();
+      const token = await auth.idToken();
       const response = await fetch(`${backendUrl}/api/notes`, {
         method: 'POST',
         headers: {
