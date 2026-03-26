@@ -1,5 +1,5 @@
 {
-  "name": "garys-note-app",
+  "name": "easy-internal-notes",
   "private": true,
   "scripts": {
     "build": "prisma generate && remix vite:build",

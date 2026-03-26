@@ -1,7 +1,7 @@
 # Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
 
 client_id = "907138498f430a44a211931ef5ec0a50"
-name = "garys-note-app"
+name = "Easy Internal Notes"
 application_url = "https://example.com"
 embedded = true
 

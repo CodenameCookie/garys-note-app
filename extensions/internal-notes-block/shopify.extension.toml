@@ -1,7 +1,7 @@
 api_version = "2026-04"
 
 [[extensions]]
-name = "Internal Notes"
+name = "Easy Internal Notes"
 handle = "internal-notes-block"
 type = "admin_block"
 
