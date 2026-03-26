@@ -12,8 +12,8 @@ import {
 import { useState, useEffect } from 'react';
 
 // Targets for both Product and Collection details pages
-export default reactExtension('admin.product-details.secondary-vertical-stack.render', () => <InternalNotesBlock />);
-export const collectionExtension = reactExtension('admin.collection-details.secondary-vertical-stack.render', () => <InternalNotesBlock />);
+export default reactExtension('admin.product-details.block.render', () => <InternalNotesBlock />);
+export const collectionExtension = reactExtension('admin.collection-details.block.render', () => <InternalNotesBlock />);
 
 function InternalNotesBlock() {
   const { data } = useApi();

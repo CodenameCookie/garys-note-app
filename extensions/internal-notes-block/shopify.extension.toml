@@ -3,12 +3,12 @@ api_version = "2026-04"
 [[extensions]]
 name = "Easy Internal Notes"
 handle = "internal-notes-block"
-type = "ui_extension"
+type = "admin_block"
 
   [[extensions.targeting]]
-  target = "admin.product-details.secondary-vertical-stack.render"
-  module = "./src/Block.tsx"
+  target = "admin.product-details.block.render"
+  module = "./src/index.tsx"
 
   [[extensions.targeting]]
-  target = "admin.collection-details.secondary-vertical-stack.render"
-  module = "./src/Block.tsx"
+  target = "admin.collection-details.block.render"
+  module = "./src/index.tsx"
