@@ -1,12 +1,4 @@
 {
   "version": 2,
-  "framework": "remix",
-  "functions": {
-    "app/routes/api.notes.tsx": {
-      "maxDuration": 10
-    },
-    "app/routes/webhooks.tsx": {
-      "maxDuration": 15
-    }
-  }
+  "framework": "remix"
 }
