@@ -3,12 +3,9 @@ api_version = "2026-04"
 [[extensions]]
 name = "Easy Internal Notes"
 handle = "internal-notes-block"
-type = "admin_block"
+uid = "254de935-f6c1-da77-dca2-3802f684113f51952864"
+type = "ui_extension"
 
   [[extensions.targeting]]
   target = "admin.product-details.block.render"
-  module = "./src/index.tsx"
-
-  [[extensions.targeting]]
-  target = "admin.collection-details.block.render"
   module = "./src/index.tsx"

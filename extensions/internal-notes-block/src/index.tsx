@@ -11,9 +11,8 @@ import {
 } from '@shopify/ui-extensions-react/admin';
 import { useState, useEffect } from 'react';
 
-// Targets for both Product and Collection details pages
+// Target for Product details page
 export default reactExtension('admin.product-details.block.render', () => <InternalNotesBlock />);
-export const collectionExtension = reactExtension('admin.collection-details.block.render', () => <InternalNotesBlock />);
 
 function InternalNotesBlock() {
   const { data } = useApi();
