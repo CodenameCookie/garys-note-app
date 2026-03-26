@@ -2,8 +2,17 @@ import { json, type ActionFunctionArgs, type LoaderFunctionArgs } from "@remix-r
 import { authenticate } from "../shopify.server";
 import db from "../db.server";
 
+const corsHeaders = {
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+  "Access-Control-Allow-Headers": "Authorization, Content-Type",
+};
+
 export const loader = async ({ request }: LoaderFunctionArgs) => {
-  // Extract cors to handle cross-origin requests from the UI Extension
+  if (request.method === "OPTIONS") {
+    return new Response(null, { status: 204, headers: corsHeaders });
+  }
+
   const { session, cors } = await authenticate.admin(request);
   const url = new URL(request.url);
   const resourceId = url.searchParams.get("resourceId");
@@ -26,13 +35,12 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
   return cors(json({ note: note?.content || "" }));
 };
 
-// Handle CORS preflight explicitly just in case
 export const action = async ({ request }: ActionFunctionArgs) => {
-  const { session, cors } = await authenticate.admin(request);
-
   if (request.method === "OPTIONS") {
-    return cors(json({}));
+    return new Response(null, { status: 204, headers: corsHeaders });
   }
+
+  const { session, cors } = await authenticate.admin(request);
 
   const data = await request.json();
   const { resourceId, resourceType, content } = data;
