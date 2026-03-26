@@ -22,7 +22,7 @@ function InternalNotesBlock() {
   const [lastSaved, setLastSaved] = useState(null);
 
   // Correct API for Product Details block
-  const gid = data.product.id;
+  const gid = data.selected[0].id;
   const resourceType = gid.includes('Product') ? 'PRODUCT' : 'COLLECTION';
   const resourceId = gid.split('/').pop();
   
