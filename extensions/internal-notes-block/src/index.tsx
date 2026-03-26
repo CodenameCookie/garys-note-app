@@ -15,20 +15,29 @@ import { useState, useEffect } from 'react';
 export default reactExtension('admin.product-details.block.render', () => <InternalNotesBlock />);
 
 function InternalNotesBlock() {
-  const { data } = useApi();
+  const { data, sessionToken } = useApi<'admin.product-details.block.render'>();
   const [note, setNote] = useState('');
   const [loading, setLoading] = useState(false);
   const [initialLoading, setInitialLoading] = useState(true);
   const [lastSaved, setLastSaved] = useState(null);
 
-  const gid = data.selectedResources[0].id;
+  // Correct API for Product Details block
+  const gid = data.product.id;
   const resourceType = gid.includes('Product') ? 'PRODUCT' : 'COLLECTION';
   const resourceId = gid.split('/').pop();
+  
+  // Absolute URL for the production backend
+  const backendUrl = "https://garys-note-app.vercel.app";
 
   useEffect(() => {
     async function fetchNote() {
       try {
-        const response = await fetch(`/api/notes?resourceId=${resourceId}&resourceType=${resourceType}`);
+        const token = await sessionToken.get();
+        const response = await fetch(`${backendUrl}/api/notes?resourceId=${resourceId}&resourceType=${resourceType}`, {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        });
         const result = await response.json();
         if (result.note) {
           setNote(result.note);
@@ -40,15 +49,17 @@ function InternalNotesBlock() {
       }
     }
     fetchNote();
-  }, [resourceId, resourceType]);
+  }, [resourceId, resourceType, sessionToken]);
 
   const handleSave = async () => {
     setLoading(true);
     try {
-      const response = await fetch('/api/notes', {
+      const token = await sessionToken.get();
+      const response = await fetch(`${backendUrl}/api/notes`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`
         },
         body: JSON.stringify({
           resourceId,
