@@ -1,0 +1,14 @@
+api_version = "2026-04"
+
+[[extensions]]
+name = "Internal Notes"
+handle = "internal-notes-block"
+type = "admin_block"
+
+  [[extensions.targeting]]
+  target = "admin.product-details.secondary-vertical-stack.render"
+  module = "./src/Block.tsx"
+
+  [[extensions.targeting]]
+  target = "admin.collection-details.secondary-vertical-stack.render"
+  module = "./src/Block.tsx"

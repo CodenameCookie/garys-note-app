@@ -1,0 +1,11 @@
+{
+  "name": "internal-notes-block",
+  "private": true,
+  "version": "1.0.0",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "@shopify/ui-extensions-react": "^0.11.0",
+    "@shopify/ui-extensions": "^0.11.0",
+    "react": "^18.2.0"
+  }
+}
