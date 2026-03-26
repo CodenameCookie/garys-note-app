@@ -2,7 +2,7 @@
 
 client_id = "907138498f430a44a211931ef5ec0a50"
 name = "Easy Internal Notes"
-application_url = "https://example.com"
+application_url = "https://garys-note-app.vercel.app"
 embedded = true
 
 [build]
@@ -25,4 +25,4 @@ api_version = "2026-04"
 scopes = "write_products"
 
 [auth]
-redirect_urls = [ "https://example.com/api/auth" ]
+redirect_urls = [ "https://garys-note-app.vercel.app/api/auth" ]

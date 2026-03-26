@@ -3,7 +3,7 @@ api_version = "2026-04"
 [[extensions]]
 name = "Easy Internal Notes"
 handle = "internal-notes-block"
-type = "admin_block"
+type = "ui_extension"
 
   [[extensions.targeting]]
   target = "admin.product-details.secondary-vertical-stack.render"
